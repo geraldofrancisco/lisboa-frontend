@@ -1,25 +1,22 @@
 :host {
-    /* Cores Globais Ajustadas para Alto Conforto Visual */
+    /* Cores Globais - Modos Escuro e Confortável */
     --sidebar-bg: #111113;
     --main-bg: #0b0b0c;
     --border-color: #27272a;
-    
-    /* Tipografia Profissional */
-    --text-color: #e4e4e7;        /* Texto principal levemente suavizado (evita o branco puro) */
-    --text-muted: #a1a1aa;        /* Texto secundário/ícones com melhor contraste */
-    --text-disabled: #71717a;     /* Textos de apoio e rótulos secundários */
-    
+    --text-color: #e4e4e7;
+    --text-muted: #a1a1aa;
+    --text-disabled: #71717a;
     --hover-bg: #1f1f23;
     --active-bg: #27272a;
-  
-    /* Font Stack Moderna */
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
   
+  /* LAYOUT CONTAINER */
   .layout-wrapper {
     display: flex;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     background-color: var(--main-bg);
     color: var(--text-color);
     font-family: var(--font-family);
@@ -28,23 +25,23 @@
     overflow: hidden;
   }
   
-  /* Sidebar Desktop */
+  /* SIDEBAR DESKTOP */
   .brand-title {
     font-weight: 600;
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;
     letter-spacing: -0.01em;
     color: #f4f4f5;
   }
-
+  
   .section-title {
-    font-size: 0.7rem; /* 11.2px */
+    font-size: 0.7rem;
     color: var(--text-disabled);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em; /* Aumenta legibilidade de labels em caixa alta */
+    letter-spacing: 0.05em;
     padding: 0.5rem 0.6rem 0.25rem;
   }
-
+  
   .sidebar {
     width: 260px;
     background-color: var(--sidebar-bg);
@@ -59,6 +56,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow: hidden;
   }
   
   .sidebar-header {
@@ -71,13 +69,14 @@
   .sidebar-content {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 0 0.75rem;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
   }
   
-  /* Estilização do p-drawer no Mobile */
+  /* DRAWER PRIMENG (MOBILE) */
   :host ::ng-deep .p-drawer {
     background-color: var(--sidebar-bg) !important;
     color: var(--text-color) !important;
@@ -96,16 +95,16 @@
     color: var(--text-color);
   }
   
-  /* Menu Items */
+  /* MENU ITEMS */
   .menu-item {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.55rem 0.65rem; /* Altura de clique confortável */
+    padding: 0.55rem 0.65rem;
     border-radius: 6px;
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 0.85rem; /* ~13.6px - Padrão corporativo moderno */
+    font-size: 0.85rem;
     font-weight: 450;
     line-height: 1.25rem;
     letter-spacing: -0.005em;
@@ -131,7 +130,6 @@
     color: var(--text-muted);
   }
   
-  /* ITEM ATIVO DA ROTA */
   .menu-item.active {
     background-color: var(--active-bg);
     color: #ffffff;
@@ -139,19 +137,12 @@
   }
   
   .menu-item.active i {
-    color: #8b5cf6; /* Destaque discreto no ícone do item ativo */
+    color: #8b5cf6;
   }
   
   .sub-item {
     padding-left: 2.35rem;
     font-size: 0.825rem;
-  }
-
-  .user-name {
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-color);
-    letter-spacing: -0.01em;
   }
   
   .sidebar-footer {
@@ -162,12 +153,19 @@
     gap: 0.75rem;
   }
   
-  /* Main Area */
+  .user-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
+  }
+  
+  /* ÁREA PRINCIPAL & TOP HEADER */
   .main-area {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-width: 0; /* Impede que o conteúdo estoure horizontalmente quando a sidebar fecha */
+    min-width: 0;
   }
   
   .top-header {
@@ -175,7 +173,28 @@
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 1rem;
+    background-color: var(--main-bg);
+  }
+  
+  .header-left,
+  .header-right {
+    display: flex;
+    align-items: center;
+    min-width: 40px;
+  }
+  
+  .header-center {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .header-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-color);
+    letter-spacing: -0.01em;
   }
   
   .icon-btn {
@@ -183,15 +202,22 @@
     border: none;
     color: var(--text-muted);
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    padding: 0.4rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon-btn:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-color);
   }
   
   .content-body {
     flex: 1;
     padding: 1rem;
     overflow-y: auto;
+    overflow-x: hidden;
   }
-
-  
-  
-  

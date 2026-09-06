@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit, inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
+// Componentes PrimeNG
 import { DrawerModule } from 'primeng/drawer';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
@@ -22,14 +22,14 @@ import { BadgeModule } from 'primeng/badge';
     BadgeModule
   ],
   templateUrl: './main-layout.html',
-  styleUrl: './main-layout.css'
+  styleUrl: './main-layout.css' // Importação do arquivo de estilo externo
 })
 export class MainLayout implements OnInit {
   private platformId = inject(PLATFORM_ID);
 
   isMobile: boolean = false;
   drawerVisible: boolean = false;
-  sidebarCollapsed: boolean = false; // Estado para ocultar/exibir no Desktop
+  sidebarCollapsed: boolean = false;
   analyticsOpen: boolean = true;
 
   ngOnInit() {
@@ -46,7 +46,6 @@ export class MainLayout implements OnInit {
     }
   }
 
-  // Método unificado para alternar a visibilidade no mobile e no desktop
   toggleSidebar() {
     if (this.isMobile) {
       this.drawerVisible = !this.drawerVisible;
