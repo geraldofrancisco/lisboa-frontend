@@ -1,4 +1,8 @@
 :host {
+    /* Garante o Box Model correto para o componente não vazar 1px de borda */
+    box-sizing: border-box;
+    display: block;
+    
     /* Cores Globais - Modos Escuro e Confortável */
     --sidebar-bg: #111113;
     --main-bg: #0b0b0c;
@@ -14,7 +18,7 @@
   /* LAYOUT CONTAINER */
   .layout-wrapper {
     display: flex;
-    height: 100vh;
+    min-height: 100dvh; /* Usa a viewport dinâmica para evitar estouro em barras do navegador */
     width: 100%;
     max-width: 100%;
     background-color: var(--main-bg);
@@ -22,7 +26,7 @@
     font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow: hidden;
+    box-sizing: border-box;
   }
   
   /* SIDEBAR DESKTOP */
@@ -49,7 +53,10 @@
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    transition: all 0.2s ease-in-out;
+    position: sticky;
+    top: 0;
+    height: 100dvh; /* Acompanha exatamente a altura da janela */
+    box-sizing: border-box;
   }
   
   .sidebar-inner {
@@ -166,6 +173,7 @@
     display: flex;
     flex-direction: column;
     min-width: 0;
+    box-sizing: border-box;
   }
   
   .top-header {
@@ -176,6 +184,9 @@
     justify-content: space-between;
     padding: 0 1rem;
     background-color: var(--main-bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
   
   .header-left,
@@ -218,6 +229,5 @@
   .content-body {
     flex: 1;
     padding: 1rem;
-    overflow-y: auto;
-    overflow-x: hidden;
+    box-sizing: border-box;
   }
