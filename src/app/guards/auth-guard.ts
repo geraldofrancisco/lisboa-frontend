@@ -6,20 +6,20 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const platformId = inject(PLATFORM_ID);
 
+  // 1. SSR Check: Permite a execução inicial no servidor Node.js
   if (!isPlatformBrowser(platformId)) {
     return true; 
   }
 
-  //descomentar quando tiver token implementado
-  //const token = localStorage.getItem('token');
+  // 2. Leitura do Token (Alterne os comentários ao integrar a API)
+  // const token = localStorage.getItem('token');
+  const token = 'token'; // Mock temporário para desenvolvimento
 
-  const token = "token"; //quando tiver implementado apagar essa linha
-  
+  // 3. Validação de Acesso
   if (token) {
-    return true; // Permite o acesso à rota
-  } else {
-    // Se não houver token, redireciona para a tela de login
-    return router.createUrlTree(['/login']);
+    return true;
   }
 
+  // 4. Redirecionamento seguro via UrlTree mantendo o estado da SPA
+  return router.createUrlTree(['/login']);
 };
