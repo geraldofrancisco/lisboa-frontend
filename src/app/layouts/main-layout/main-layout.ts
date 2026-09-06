@@ -7,6 +7,7 @@ import { DrawerModule } from 'primeng/drawer';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-main-layout',
@@ -19,7 +20,8 @@ import { BadgeModule } from 'primeng/badge';
     DrawerModule,
     ButtonModule,
     AvatarModule,
-    BadgeModule
+    BadgeModule,
+    CardModule
   ],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.css' // Importação do arquivo de estilo externo
