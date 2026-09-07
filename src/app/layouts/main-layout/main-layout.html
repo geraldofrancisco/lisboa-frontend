@@ -1,92 +1,88 @@
 <div class="layout-wrapper">
-    <!-- SIDEBAR FIXA (DESKTOP) -->
-    @if (!isMobile && !sidebarCollapsed) {
-      <aside class="sidebar">
-        <ng-container *ngTemplateOutlet="sidebarContent"></ng-container>
-      </aside>
-    }
-  
-    <!-- SIDEBAR OVERLAY/DRAWER (MOBILE) -->
-    @if (isMobile) {
-      <p-drawer [(visible)]="drawerVisible" [showCloseIcon]="true">
-        <ng-container *ngTemplateOutlet="sidebarContent"></ng-container>
-      </p-drawer>
-    }
-  
-    <!-- ÁREA PRINCIPAL -->
-    <div class="main-area">
-      <header class="top-header">
-        <div class="header-left">
-          <button type="button" class="icon-btn" (click)="toggleSidebar()" title="Alternar Menu">
-            <i class="pi pi-bars"></i>
+  <!-- SIDEBAR FIXA (DESKTOP) -->
+  @if (!isMobile && !sidebarCollapsed) {
+  <aside class="sidebar">
+    <ng-container *ngTemplateOutlet="sidebarContent"></ng-container>
+  </aside>
+  }
+
+  <!-- SIDEBAR OVERLAY/DRAWER (MOBILE) -->
+  @if (isMobile) {
+  <p-drawer [(visible)]="drawerVisible" [showCloseIcon]="true">
+    <ng-container *ngTemplateOutlet="sidebarContent"></ng-container>
+  </p-drawer>
+  }
+
+  <!-- ÁREA PRINCIPAL -->
+  <div class="main-area">
+    <header class="top-header">
+      <div class="header-left">
+        <button type="button" class="icon-btn" (click)="toggleSidebar()" title="Exibir / ocultar menu">
+          <i class="pi pi-bars"></i>
+        </button>
+      </div>
+
+      <div class="header-center">
+        <span class="header-title">Painel de Controle</span>
+      </div>
+
+      <div class="header-right">
+        <app-theme></app-theme>
+      </div>
+    </header>
+
+    <main class="content-body">
+      <p-card>
+        <router-outlet></router-outlet>
+      </p-card>
+    </main>
+  </div>
+</div>
+
+<!-- TEMPLATE DO CONTEÚDO DA SIDEBAR -->
+<ng-template #sidebarContent>
+  <div class="sidebar-inner">
+    <div class="sidebar-header">
+      <p-avatar label="A" styleClass="brand-avatar" shape="square" />
+      <span class="brand-title">Acme Inc</span>
+    </div>
+
+    <div class="sidebar-content">
+      <div class="menu-section">
+        <span class="section-title">Navigation</span>
+
+        <a routerLink="/dashboard" routerLinkActive="active" class="menu-item" (click)="drawerVisible = false">
+          <i class="pi pi-home"></i>
+          <span class="label">Home</span>
+        </a>
+
+      </div>
+
+      <div class="menu-section">
+        <span class="section-title">Estruturante</span>
+
+        <div class="submenu-group">
+          <button type="button" class="menu-item submenu-header" (click)="toggleAnalytics()">
+            <i class="pi pi-inbox"></i>
+            <span class="label">E-mails</span>
+            <i class="pi chevron" [ngClass]="analyticsOpen ? 'pi-chevron-down' : 'pi-chevron-right'"></i>
           </button>
+
+          @if (analyticsOpen) {
+          <div class="submenu-items">
+            <a routerLink="/fundational/email/type" routerLinkActive="active" class="menu-item sub-item"
+              (click)="drawerVisible = false">
+              Tipo
+            </a>
+          </div>
+          }
         </div>
-  
-        <div class="header-center">
-          <span class="header-title">Painel de Controle</span>
-        </div>
-  
-        <div class="header-right">
-          <app-theme></app-theme>
-        </div>
-      </header>
-  
-      <main class="content-body">
-        <p-card>
-            <router-outlet></router-outlet>
-        </p-card>        
-      </main>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <p-avatar label="JD" shape="circle" styleClass="user-avatar" />
+      <span class="user-name">John Doe</span>
     </div>
   </div>
-  
-  <!-- TEMPLATE DO CONTEÚDO DA SIDEBAR -->
-  <ng-template #sidebarContent>
-    <div class="sidebar-inner">
-      <div class="sidebar-header">
-        <p-avatar label="A" styleClass="brand-avatar" shape="square" />
-        <span class="brand-title">Acme Inc</span>
-      </div>
-  
-      <div class="sidebar-content">
-        <div class="menu-section">
-          <span class="section-title">Navigation</span>
-  
-          <a routerLink="/dashboard" routerLinkActive="active" class="menu-item" (click)="drawerVisible = false">
-            <i class="pi pi-home"></i>
-            <span class="label">Home</span>
-          </a>
-  
-          <a routerLink="/inbox" routerLinkActive="active" class="menu-item" (click)="drawerVisible = false">
-            <i class="pi pi-inbox"></i>
-            <span class="label">Inbox</span>
-            <p-badge value="12" severity="secondary" styleClass="badge-pill" />
-          </a>
-        </div>
-  
-        <div class="menu-section">
-          <span class="section-title">Projects</span>
-  
-          <div class="submenu-group">
-            <button type="button" class="menu-item submenu-header" (click)="toggleAnalytics()">
-              <i class="pi pi-chart-bar"></i>
-              <span class="label">Analytics</span>
-              <i class="pi chevron" [ngClass]="analyticsOpen ? 'pi-chevron-down' : 'pi-chevron-right'"></i>
-            </button>
-  
-            @if (analyticsOpen) {
-              <div class="submenu-items">
-                <a routerLink="/email-type" routerLinkActive="active" class="menu-item sub-item" (click)="drawerVisible = false">
-                  Email Types
-                </a>
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-  
-      <div class="sidebar-footer">
-        <p-avatar label="JD" shape="circle" styleClass="user-avatar" />
-        <span class="user-name">John Doe</span>
-      </div>
-    </div>
-  </ng-template>
+</ng-template>
