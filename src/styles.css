@@ -1,11 +1,26 @@
 @import "primeicons/primeicons.css";
 
+/* Variáveis para Tema Claro (padrão) */
+:root {
+    --bg-primary: #ffffff;
+    --text-primary: #121212;
+}
+
+/* Variáveis para Tema Escuro */
+:root.my-app-dark {
+    --bg-primary: #121212;
+    --text-primary: #ffffff;
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 *,

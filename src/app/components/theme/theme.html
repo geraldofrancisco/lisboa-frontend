@@ -1,0 +1,7 @@
+<p-button 
+  [icon]="themeService.currentTheme() === 'dark' ? 'pi pi-moon' : 'pi pi-sun'" 
+  [label]="themeService.currentTheme() === 'dark' ? 'Modo Escuro' : 'Modo Claro'"
+  [rounded]="true"
+  [text]="true"
+  (onClick)="toggleTheme()">
+</p-button>
