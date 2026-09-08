@@ -1,0 +1,59 @@
+<p-accordion [value]="isExpanded() ? '0' : ''" class="mb-4">
+    <p-accordion-panel value="0">
+        <p-accordion-header>{{ accordionTitle() }}</p-accordion-header>
+        <p-accordion-content>
+            <form [formGroup]="form" (ngSubmit)="onSearch()">
+                <div class="grid p-fluid">
+                    @for (field of fields(); track field.key) {
+                    <div class="col-12 md:col-6 lg:col-4 flex flex-column gap-2">
+                        <label [for]="field.key" class="font-medium text-color-secondary text-sm">
+                            {{ field.label }}
+                        </label>
+
+                        @switch (field.kind || 'text') {
+                        @case ('text') {
+                        <input pInputText [id]="field.key" [formControlName]="field.key"
+                            [placeholder]="field.props?.['placeholder'] || ''" class="p-inputtext-sm" />
+                        }
+                        @case ('select') {
+                        <p-select [id]="field.key" [formControlName]="field.key"
+                            [options]="field.props?.['options'] || []"
+                            [optionLabel]="field.props?.['optionLabel'] || 'label'"
+                            [optionValue]="field.props?.['optionValue'] || 'value'"
+                            [placeholder]="field.props?.['placeholder'] || 'Selecione...'"
+                            class="p-inputtext-sm"></p-select>
+                        }
+                        @case ('datepicker') {
+                            <p-datepicker 
+                            [id]="field.key" 
+                            [formControlName]="field.key"
+                            [dateFormat]="field.props?.['dateFormat'] || 'dd/mm/yy'"
+                            [showIcon]="field.props?.['showIcon'] ?? true"
+                            [placeholder]="field.props?.['placeholder'] || 'Selecione a data'"
+                            [appendTo]="field.props?.['appendTo'] || 'body'"
+                            class="p-inputtext-sm">
+                          </p-datepicker>
+                        }
+                        @case ('mask') {
+                        <p-inputMask [id]="field.key" [formControlName]="field.key" [mask]="field.props?.['mask'] || ''"
+                            [placeholder]="field.props?.['placeholder'] || ''" class="p-inputtext-sm"></p-inputMask>
+                        }
+                        @case ('selectbutton') {
+                        <p-selectButton [id]="field.key" [formControlName]="field.key"
+                            [options]="field.props?.['options'] || []"
+                            [optionLabel]="field.props?.['optionLabel'] || 'label'"
+                            [optionValue]="field.props?.['optionValue'] || 'value'"></p-selectButton>
+                        }
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div class="flex justify-content-end mt-3 pt-3 border-top-1 surface-border">
+                    <button pButton pRipple type="submit" [label]="buttonLabel()" icon="pi pi-search"
+                        class="p-button-primary p-button-sm w-full sm:w-auto"></button>
+                </div>
+            </form>
+        </p-accordion-content>
+    </p-accordion-panel>
+</p-accordion>
