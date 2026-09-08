@@ -1,4 +1,10 @@
 <app-grid-title title="Emails criados" 
 subtitle="Tela que faz o controle da criação/envio de emails" 
 icon="pi pi-inbox"></app-grid-title>
-demais componentes
+
+<app-grid-field
+  ngSkipHydration
+  [fields]="meusFiltros"
+  accordionTitle="Filtros Avançados"
+  (search)="conductResarch($event)">
+</app-grid-field>
