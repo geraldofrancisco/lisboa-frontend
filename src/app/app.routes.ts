@@ -4,6 +4,7 @@ import { MainLayout } from './layouts/main-layout/main-layout';
 import { authGuard } from './guards/auth-guard';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { EmailTypeList } from './pages/fundational/email-type/email-type-list/email-type-list';
+import { EmailList } from './pages/fundational/email/email-list/email-list';
 
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
                     {
                         path: 'email', 
                         children: [
+                            { path: '', component: EmailList },
                             { path: 'type', component: EmailTypeList }
                         ]
                     },

@@ -70,6 +70,10 @@
 
           @if (analyticsOpen) {
           <div class="submenu-items">
+            <a routerLink="/fundational/email/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+              class="menu-item sub-item" (click)="drawerVisible = false">
+              Criar
+            </a>
             <a routerLink="/fundational/email/type" routerLinkActive="active" class="menu-item sub-item"
               (click)="drawerVisible = false">
               Tipo
