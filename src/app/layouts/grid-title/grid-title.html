@@ -1,0 +1,14 @@
+<div class="grid-title-container">
+    <!-- Topo: Ícone + Título (Lado a Lado) -->
+    <div class="header-main">
+      @if (icon()) {
+        <i [class]="icon() + ' header-icon'"></i>
+      }
+      <h2 class="header-title">{{ title() }}</h2>
+    </div>
+  
+    <!-- Subtítulo (Abaixo da Linha) -->
+    @if (subtitle()) {
+      <p class="header-subtitle">{{ subtitle() }}</p>
+    }
+  </div>
