@@ -28,3 +28,54 @@ body {
 *:after {
     box-sizing: inherit;
 }
+
+/* Padronização Global de Altura de Formulários PrimeNG (v18+) */
+:root {
+    --p-inputtext-padding-y: 0.35rem; /* Ajusta o padding vertical base do PrimeNG */
+  }
+  
+  /* Força a altura exata de 34.6px para TODOS os controles do PrimeNG */
+  .p-inputtext,
+  .p-select,
+  .p-datepicker input,
+  .p-inputmask input,
+  .p-selectbutton .p-button {
+    height: 34.6px !important;
+    min-height: 34.6px !important;
+    max-height: 34.6px !important;
+    box-sizing: border-box !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Alinha o texto e o ícone verticalmente no centro dentro dos 34.6px */
+  .p-inputtext,
+  .p-inputmask input,
+  .p-datepicker input {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 34.6px !important;
+  }
+  
+  /* Alinhamento do Select */
+  .p-select .p-select-label {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1 !important;
+  }
+  
+  /* Alinhamento do SelectButton */
+  .p-selectbutton {
+    display: flex !important;
+    height: 34.6px !important;
+  }
+  
+  .p-selectbutton .p-button {
+    flex: 1;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+  }

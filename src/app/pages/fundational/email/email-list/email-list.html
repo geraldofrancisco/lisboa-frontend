@@ -4,6 +4,7 @@ icon="pi pi-inbox"></app-grid-title>
 
 <app-grid-field
   ngSkipHydration
+  [isExpanded]="false"
   [fields]="meusFiltros"
   accordionTitle="Filtros Avançados"
   (search)="conductResarch($event)">
