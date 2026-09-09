@@ -79,3 +79,14 @@ body {
     justify-content: center !important;
     padding: 0 !important;
   }
+
+  /* Correção do p-inputmask para ocupar 100% da largura */
+p-inputmask,
+.p-inputmask {
+    display: inline-block !important;
+    width: 100% !important;
+}
+
+.p-inputmask input {
+    width: 100% !important;
+}
