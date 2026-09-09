@@ -1,66 +1,76 @@
 /* Container de Grid Responsivo */
 .filters-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.25rem;
+}
+
+/* Telas médias (Tablets): 2 colunas */
+@media (min-width: 768px) {
+  .filters-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  /* Telas médias (Tablets): 2 colunas */
-  @media (min-width: 768px) {
-    .filters-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+}
+
+/* Telas grandes (Desktops): 3 colunas */
+@media (min-width: 1024px) {
+  .filters-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  /* Telas grandes (Desktops): 3 colunas */
-  @media (min-width: 1024px) {
-    .filters-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+}
+
+/* Telas Ultra Wide: 4 colunas */
+@media (min-width: 1600px) {
+
+  /* Você pode alterar 1440px para 1600px se preferir */
+  .filters-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
-  
-  /* Item individual do filtro */
-  .filter-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+}
+
+/* Item individual do filtro */
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Garante a largura total dos elementos dentro da Grid */
+:host ::ng-deep {
+
+  .p-inputtext,
+  .p-select,
+  .p-datepicker,
+  .p-inputmask,
+  .p-selectbutton {
+    width: 100% !important;
   }
-  
-  /* Garante a largura total dos elementos dentro da Grid */
-  :host ::ng-deep {
-    .p-inputtext,
-    .p-select,
-    .p-datepicker,
-    .p-inputmask,
-    .p-selectbutton {
-      width: 100% !important;
-    }
-  }
-  
-  /* Container do Botão de Pesquisa */
+}
+
+/* Container do Botão de Pesquisa */
+.actions-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--surface-border, rgba(255, 255, 255, 0.1));
+}
+
+/* Estilo do Botão */
+.actions-container button {
+  width: auto;
+  min-width: 140px;
+  height: 34.6px !important;
+}
+
+/* Responsividade para celular */
+@media (max-width: 576px) {
   .actions-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    margin-top: 2.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--surface-border, rgba(255, 255, 255, 0.1));
+    margin-top: 2rem;
   }
-  
-  /* Estilo do Botão */
+
   .actions-container button {
-    width: auto;
-    min-width: 140px;
-    height: 34.6px !important;
+    width: 100%;
   }
-  
-  /* Responsividade para celular */
-  @media (max-width: 576px) {
-    .actions-container {
-      margin-top: 2rem;
-    }
-  
-    .actions-container button {
-      width: 100%;
-    }
-  }
+}
