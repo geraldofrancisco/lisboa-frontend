@@ -34,59 +34,80 @@ body {
     --p-inputtext-padding-y: 0.35rem; /* Ajusta o padding vertical base do PrimeNG */
   }
   
-  /* Força a altura exata de 34.6px para TODOS os controles do PrimeNG */
-  .p-inputtext,
-  .p-select,
-  .p-datepicker input,
-  .p-inputmask input,
-  .p-selectbutton .p-button {
+ /* ==========================================================================
+   Padronização Global de Formulários PrimeNG (v18+)
+   ========================================================================== */
+
+/* 1. Garante que os componentes wrappers ocupem 100% da largura do grid */
+p-select,
+p-datepicker,
+p-inputmask,
+p-selectbutton,
+.p-select,
+.p-datepicker,
+.p-inputmask,
+.p-selectbutton {
+    display: flex !important;
+    width: 100% !important;
+}
+
+/* 2. Força altura e largura exatas nos elementos de entrada */
+input.p-inputtext,
+.p-select,
+.p-datepicker input,
+.p-inputmask input,
+.p-selectbutton .p-button {
     height: 34.6px !important;
     min-height: 34.6px !important;
     max-height: 34.6px !important;
+    width: 100% !important;
     box-sizing: border-box !important;
     font-size: 0.875rem !important;
-  }
-  
-  /* Alinha o texto e o ícone verticalmente no centro dentro dos 34.6px */
-  .p-inputtext,
-  .p-inputmask input,
-  .p-datepicker input {
+}
+
+/* 3. Alinhamento de Texto e Padding Interno */
+input.p-inputtext,
+.p-inputmask input,
+.p-datepicker input {
+    display: block !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
     line-height: 34.6px !important;
-  }
-  
-  /* Alinhamento do Select */
-  .p-select .p-select-label {
+}
+
+/* 4. Ajuste específico para o Select */
+.p-select {
+    align-items: center !important;
+}
+
+.p-select .p-select-label {
     display: flex !important;
     align-items: center !important;
     height: 100% !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     line-height: 1 !important;
-  }
-  
-  /* Alinhamento do SelectButton */
-  .p-selectbutton {
-    display: flex !important;
+}
+
+/* 5. Ajuste específico para o Datepicker (Input + Botão do Ícone) */
+.p-datepicker {
+    align-items: center !important;
+}
+
+.p-datepicker button,
+.p-datepicker .p-datepicker-dropdown {
     height: 34.6px !important;
-  }
-  
-  .p-selectbutton .p-button {
+    min-height: 34.6px !important;
+    max-height: 34.6px !important;
+}
+
+/* 6. Ajuste específico para o SelectButton */
+.p-selectbutton .p-button {
     flex: 1;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     padding: 0 !important;
-  }
-
-  /* Correção do p-inputmask para ocupar 100% da largura */
-p-inputmask,
-.p-inputmask {
-    display: inline-block !important;
-    width: 100% !important;
-}
-
-.p-inputmask input {
-    width: 100% !important;
 }
